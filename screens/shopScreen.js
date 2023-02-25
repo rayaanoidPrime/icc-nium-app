@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, decrementQuantity, incrementQuantity, removeFromCart } from "../CartReducer";
+import { addToCart, decrementQuantity, incrementQuantity, removeFromCart } from "../Cart";
 
 const HomeScreen = () => {
   const cart = useSelector((state) => state.cart.cart);
