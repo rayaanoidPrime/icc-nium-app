@@ -5,6 +5,7 @@ import {
   Image,
   Pressable,
   SafeAreaView,
+  ScrollView,
 } from "react-native";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -58,6 +59,7 @@ const ShopScreen = () => {
   }
   return (
     <SafeAreaView>
+      <ScrollView style={[styles.scrollView , {height: 500}]}>
       <Text style={{ textAlign: "center", fontSize: 16 }}>
         ICC Shop
       </Text>
@@ -156,10 +158,16 @@ const ShopScreen = () => {
           </Pressable>
         </View>
       ))}
-    </SafeAreaView>
+      </ScrollView>
+      </SafeAreaView>
   );
 };
 
 export default ShopScreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  scrollView: {
+    backgroundColor: 'white',
+    marginHorizontal: 50,
+  },
+});
