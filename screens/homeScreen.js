@@ -65,7 +65,7 @@ export default function HomeScreen() {
           }}>Explore</Text>
           <ScrollView horizontal={true} contentContainerStyle={styles.scrollContainer}>
             <View style={styles.cardContainer}>
-              <View style={styles.card}>
+              <View style={styles.exploreCard}>
                 <Text>Card</Text>
               </View>
               <Text style={{
@@ -75,7 +75,7 @@ export default function HomeScreen() {
               }}>Description of the card</Text>
             </View>
             <View style={styles.cardContainer}>
-              <View style={styles.card}>
+              <View style={styles.exploreCard}>
                 <Text>Card</Text>
               </View>
               <Text style={{
@@ -85,7 +85,7 @@ export default function HomeScreen() {
               }}>Description of the card</Text>
             </View>
             <View style={styles.cardContainer}>
-              <View style={styles.card}>
+              <View style={styles.exploreCard}>
                 <Text>Card</Text>
               </View>
               <Text style={{
@@ -106,7 +106,7 @@ export default function HomeScreen() {
           }}>Stats</Text>
           <ScrollView horizontal={true} contentContainerStyle={styles.scrollContainer}>
             <View style={styles.cardContainer}>
-              <View style={styles.card}>
+              <View style={styles.statsCard}>
                 <Text>Card</Text>
               </View>
               <Text style={{
@@ -116,7 +116,7 @@ export default function HomeScreen() {
               }}>Description of the card</Text>
             </View>
             <View style={styles.cardContainer}>
-              <View style={styles.card}>
+              <View style={styles.statsCard}>
                 <Text>Card</Text>
               </View>
               <Text style={{
@@ -126,7 +126,7 @@ export default function HomeScreen() {
               }}>Description of the card</Text>
             </View>
             <View style={styles.cardContainer}>
-              <View style={styles.card}>
+              <View style={styles.statsCard}>
                 <Text>Card</Text>
               </View>
               <Text style={{
@@ -158,6 +158,26 @@ export default function HomeScreen() {
       margin : 5,
       zIndex : 10
     },
+    statsCard : {
+      height: 150,
+      width: 150,
+      backgroundColor : 'white',
+      borderRadius : 75,
+      justifyContent : 'center',
+      alignItems : 'center',
+      margin : 5,
+      zIndex : 10
+    },
+    exploreCard : {
+      height: 350,
+      width: 200,
+      backgroundColor : 'white',
+      borderRadius : 40,
+      justifyContent : 'center',
+      alignItems : 'center',
+      margin : 5,
+      zIndex : 10
+    },
     scrollContainer : {
      height : "auto",
      width : 'auto',
@@ -168,7 +188,7 @@ export default function HomeScreen() {
       zIndex : 0,
       backgroundColor : "black",
       borderRadius : 40,
-      height : 200,
+      height : 'auto',
       margin : 5,
       flex : 1,
       textAlign: 'center'
