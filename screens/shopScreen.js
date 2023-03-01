@@ -5,11 +5,20 @@ import {
   Image,
   Pressable,
   SafeAreaView,
+  ScrollView,
+  ViewComponent,
 } from "react-native";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, decrementQuantity, incrementQuantity, removeFromCart } from "../Cart";
+import { YellowBox } from "react-native-web";
+//import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+//const merchStack = createNativeStackNavigator()
+
+//function merchandise_screen() { return (
+  //<View><Text>Merch Screen</Text></View>
+//) }
 const ShopScreen = () => {
   const cart = useSelector((state) => state.cart.cart);
   console.log(cart);
@@ -18,7 +27,7 @@ const ShopScreen = () => {
     {
       id: "0",
       image:
-        "content/dam/icicibank/india/managed-assets/images/offer-zone/shopping/gaames-merchandise-offer-d.jpg",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrc_VcnrhhwOQIFQ0CAftTfY4BmPETpCFhcQ&usqp=CAUw",
       name: "Merchandise Kit",
     },
     {
@@ -58,43 +67,47 @@ const ShopScreen = () => {
   }
   return (
     <SafeAreaView>
-      <Text style={{ textAlign: "center", fontSize: 16 }}>
+      <ScrollView style={[styles.scrollView , {height:500}]}>
+      <Text style={{ textAlign: "center", fontSize: 20, backgroundColor:"black", color:"white"}}>
         ICC Shop
       </Text>
       {images.map((item) => (
         <Pressable
+         // onPress={navigator.navigate}
           key={item.id}
-          style={{ flexDirection: "row", alignItems: "center" }}
+          style={{ flexDirection: "row", alignItems: "center" , backgroundColor:"rgba(2,43,89,255)"}}
         >
-          <View style={{ margin: 10 }}>
+          <View style={[styles.card , {margin: 10, borderColor: "black" }]}>
             <Image
-              style={{ width: 100, height: 100, borderRadius: 8 }}
+              style={[styles.card, {width: 200, height: 200, borderRadius: 10, color:"white"}]}
               source={{ uri: item.image }}
             />
           </View>
           <View>
-            <Text style={{ fontWeight: "bold" }}>{item.name}</Text>
+            <Text style={[styles.card, { fontWeight: "bold" , color:"white"}]}>{item.name}</Text>
             {cart.some((value) => value.id == item.id) ? (
-              <Pressable onPress={() => removeItemFromCart(item)}>
+              <Pressable style = {{backgroundColor:"black", height: 40, width: 160}}  onPress={() => removeItemFromCart(item)}>
                 <Text
                   style={{
-                    borderColor: "gray",
-                    borderWidth: 1,
-                    marginVertical: 10,
+                    borderStyle: "bold",
+                    borderWidth: 2,
+                    marginVertical: 5,
                     padding: 5,
+                    color:"white"
                   }}
                 >
                   REMOVE FROM CART
                 </Text>
               </Pressable>
             ) : (
-              <Pressable onPress={() => addItemToCart(item)}>
+              <Pressable style = {{backgroundColor:"black", height: 40, width: 110}} onPress={() => addItemToCart(item)}>
                 <Text
                   style={{
-                    borderColor: "gray",
-                    borderWidth: 1,
-                    marginVertical: 10,
+                    borderColor: "black",
+                    borderWidth: 2,
+                    marginVertical: 5,
                     padding: 5,
+                    color:"white"
                   }}
                 >
                   ADD TO CART
@@ -113,7 +126,7 @@ const ShopScreen = () => {
               flexDirection: "row",
               marginTop:20,
               alignItems: "center",
-              backgroundColor: "#FF3366",
+              backgroundColor: "dodgerblue",
               borderRadius: 5,
               width: 120,
             }}
@@ -122,7 +135,7 @@ const ShopScreen = () => {
               <Text
                 style={{
                   fontSize: 25,
-                  color: "white",
+                  color: "red",
                   paddingHorizontal: 10,
                 }}
               >
@@ -146,7 +159,7 @@ const ShopScreen = () => {
               <Text
                 style={{
                   fontSize: 20,
-                  color: "white",
+                  color: "black",
                   paddingHorizontal: 10,
                 }}
               >
@@ -156,10 +169,16 @@ const ShopScreen = () => {
           </Pressable>
         </View>
       ))}
-    </SafeAreaView>
+      </ScrollView>
+      </SafeAreaView>
   );
 };
 
 export default ShopScreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  scrollView: {
+    backgroundColor: 'white',
+    marginHorizontal: 50,
+  },
+});
