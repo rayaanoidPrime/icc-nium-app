@@ -185,7 +185,7 @@ export default function HomeScreen() {
      paddingBottom : 15
     },
     cardContainer:{
-      zIndex : 0,
+      zIndex : 10,
       backgroundColor : "black",
       borderRadius : 40,
       height : 'auto',
