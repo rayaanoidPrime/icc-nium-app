@@ -38,29 +38,64 @@ const ShopScreen = (props) => {
     return (
      <SafeAreaView
      style={{
-       flex: 1,
-       justifyContent: "center",
-       alignItems: "center",
-       backgroundColor: "rgba(2,43,89,255)"
+      flex : 1,
+      //padding : 15,
+      backgroundColor :'rgba(2,43,89,255)',
+      paddingTop: StatusBar.currentHeight,
      }}>
-       <View>
+      <NavBar/>
+      <ScrollView style={[styles.scrollView]}>
+      <ScrollView horizontal={true} contentContainerStyle={styles.scrollContainer}>
+       <View style={styles.cardContainer}>
          <TouchableOpacity
            onPress={() => props.navigation.navigate('merchScreen')}>
-         <Text style={{fontSize:25,fontWeight:"bold",colour:"black",textAlign: "center"}}>Merchandise</Text>
+            <View style={styles.card}>
+         <Text>image</Text>
+         </View>
+         <Text style={{
+                fontFamily : "",
+                color : "white",
+              }}>Merchandise</Text>
          </TouchableOpacity>
+         </View>
+         <View style={styles.cardContainer}>
          <TouchableOpacity
            onPress={() => props.navigation.navigate('iccpasscreen')}>
-         <Text style={{fontSize:25,fontWeight:"bold",colour:"black",textAlign: "center"}}>ICC Seasonal Pass</Text>
+         <View style={styles.card}>
+          <Text>Image</Text>
+          </View>
+          <Text style={{
+                fontFamily : "",
+                color : "white",
+              }}>ICC Seasonal Pass</Text>
          </TouchableOpacity>
+         </View>
+         <View style={styles.cardContainer}>
          <TouchableOpacity
            onPress={() => props.navigation.navigate('matchticket')}>
-         <Text style={{fontSize:25,fontWeight:"bold",colour:"black",textAlign: "center"}}>Match Ticket</Text>
+         <View style={styles.card}>
+          <Text>Image</Text>
+        </View>
+        <Text style={{
+                fontFamily : "",
+                color : "white",
+              }}>Match Ticket</Text>
          </TouchableOpacity>
+         </View>
+         <View style={styles.cardContainer}>
          <TouchableOpacity
            onPress={() => props.navigation.navigate('iccpointsscreen')}>
-         <Text style={{fontSize:25,fontWeight:"bold",colour:"black",textAlign: "center"}}>ICC Points</Text>
-         </TouchableOpacity>    
+         <View style={styles.card}>
+          <Text>Image</Text>
+          </View>
+          <Text style={{
+                fontFamily : "",
+                color : "white",
+              }}>ICC Points</Text>
+         </TouchableOpacity>
        </View>
+       </ScrollView>
+       </ScrollView>
      </SafeAreaView>
      )
   
@@ -84,7 +119,60 @@ export default ShopScreen;
 
 const styles = StyleSheet.create({
   scrollView: {
-    width : 'auto',
+    //backgroundColor: 'white',
+    //marginHorizontal: 50,
+    width: "auto"
   },
-});
+  container : {
+    flex : 1,
+    flexDirection : 'column',
+    padding : '20%',
+    backgroundColor :'dodgerblue',
+  },
+  card : {
+    height: 150,
+    width: 200,
+    backgroundColor : 'white',
+    borderRadius : 40,
+    justifyContent : 'center',
+    alignItems : 'center',
+    margin : 5,
+    zIndex : 10
+  },
+  statsCard : {
+    height: 150,
+    width: 150,
+    backgroundColor : 'white',
+    borderRadius : 75,
+    justifyContent : 'center',
+    alignItems : 'center',
+    margin : 5,
+    zIndex : 10
+  },
+  exploreCard : {
+    height: 350,
+    width: 200,
+    backgroundColor : 'white',
+    borderRadius : 40,
+    justifyContent : 'center',
+    alignItems : 'center',
+    margin : 5,
+    zIndex : 10
+  },
+  scrollContainer : {
+   height : "auto",
+   width : 'auto',
+   padding : 10,
+   paddingBottom : 15
+  },
+   cardContainer:{
+   zIndex : 10,
+   backgroundColor : "black",
+   borderRadius : 40,
+   height : '',
+   margin : 5,
+   flex : 1,
+   textAlign: 'center'
+  }
+})
 
