@@ -5,7 +5,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 export default function NavBar(){
    return (
     <View style={styles.navbar}>
-        <View style={styles.accordian}>
+        <View >
             <Ionicons name="menu" size={26} color="white" />
         </View>
         <View style={styles.pfp}>
@@ -33,7 +33,9 @@ const styles = StyleSheet.create({
         width : '100%',
         position : 'relative',
         alignItems : 'center',
-        justifyContent : 'space-between'
+        justifyContent : 'space-between',
+        zIndex : 10,
+        //position : 'absolute'
     },
     icons:{
         paddingTop : 6.5,
