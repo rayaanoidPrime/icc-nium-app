@@ -1,3 +1,13 @@
+shopscreen = main
+const merchscreen = const homescreen
+
+
+
+Merch screen = buying adding deleting from cart
+
+
+
+
 import {
   StyleSheet,
   Text,
@@ -7,19 +17,59 @@ import {
   SafeAreaView,
   ScrollView,
   ViewComponent,
+TouchableOpacity,
 } from "react-native";
-import React from "react";
+import React from "react"; 
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, decrementQuantity, incrementQuantity, removeFromCart } from "../Cart";
 import { YellowBox } from "react-native-web";
-//import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-//const merchStack = createNativeStackNavigator()
+const Stack = createNativeStackNavigator();
 
-//function merchandise_screen() { return (
-  //<View><Text>Merch Screen</Text></View>
-//) }
-const ShopScreen = () => {
+const App = () => {
+  return (
+    <NavigationContainer independent={true}>
+    <Stack.Navigator>
+    <Stack.Screen Component={Shopscreen} name="Shopscreen" options={{headerShown:false}} />
+    <Stack.Screen Component={merchScreen} name="merchScreen" />
+   </Stack.Navigator>
+  </NavigationContainer>
+ )
+}
+
+const Shopscreen = ({navigation}) => {
+   return (
+    <SafeAreaView
+    style={{
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+      backgroundColor: "rgba(2,43,89,255)"
+    }}>
+      <View>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("merchScreen")}>
+        <Text style={{fontSize:30,fontWeight:"bold",colour:"black"}}>Merchandise</Text>
+        </TouchableOpacity>
+      </View>
+    </SafeAreaView>
+    )
+
+}
+//function shopStack ()
+//{
+ // return (
+ //   <NavigationContainer independent="true">
+ //   <Stack.Navigator initialRouteName="Shopscreen">
+ //     <Stack.Screen name="Shopscreen" component={Shopscreen}/>
+ //     <Stack.Screen Component={merchScreen} name="merchScreen" />
+ //   </Stack.Navigator>
+ //   </NavigationContainer>
+ // )
+//}
+const merchScreen = () => {
   const cart = useSelector((state) => state.cart.cart);
   console.log(cart);
   const dispatch = useDispatch();
@@ -174,11 +224,13 @@ const ShopScreen = () => {
   );
 };
 
-export default ShopScreen;
+export default App;
 
 const styles = StyleSheet.create({
   scrollView: {
     backgroundColor: 'white',
     marginHorizontal: 50,
+    height : "auto",
+    width: "auto"
   },
 });
