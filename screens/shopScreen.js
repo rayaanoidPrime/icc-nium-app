@@ -7,11 +7,18 @@ import {
   SafeAreaView,
   ScrollView,
   ViewComponent,
+  useWindowDimensions,
 } from "react-native";
 import React from "react";
+import NavBar from '../components/navbar'
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, decrementQuantity, incrementQuantity, removeFromCart } from "../Cart";
-import { YellowBox } from "react-native-web";
+import { StatusBar } from 'expo-status-bar';
+import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
+
+// ...
+
+
 //import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 //const merchStack = createNativeStackNavigator()
@@ -20,6 +27,8 @@ import { YellowBox } from "react-native-web";
   //<View><Text>Merch Screen</Text></View>
 //) }
 const ShopScreen = () => {
+  //const {height, width} = useWindowDimensions();
+  const tabBottomHeight = useBottomTabBarHeight();
   const cart = useSelector((state) => state.cart.cart);
   console.log(cart);
   const dispatch = useDispatch();
@@ -66,27 +75,31 @@ const ShopScreen = () => {
     }
   }
   return (
-    <SafeAreaView>
-      <ScrollView style={[styles.scrollView , {height:500}]}>
-      <Text style={{ textAlign: "center", fontSize: 20, backgroundColor:"black", color:"white"}}>
-        ICC Shop
-      </Text>
+    <SafeAreaView style={{ 
+      flex : 1,
+      //padding : 15,
+      backgroundColor :'rgba(2,43,89,255)',
+      paddingTop: StatusBar.currentHeight,
+      }}>
+      <NavBar/>
+      <ScrollView style={[styles.scrollView  ]}>
       {images.map((item) => (
         <Pressable
          // onPress={navigator.navigate}
           key={item.id}
-          style={{ flexDirection: "row", alignItems: "center" , backgroundColor:"rgba(2,43,89,255)"}}
+          style={{ flex : 1 ,flexDirection: "row",  backgroundColor:"rgba(2,43,89,255)" , padding : 20 , paddingBottom : 50}}
         >
-          <View style={[styles.card , {margin: 10, borderColor: "black" }]}>
+          <View style={{margin: 10, borderColor: "black" }}>
             <Image
-              style={[styles.card, {width: 200, height: 200, borderRadius: 10, color:"white"}]}
+              style={{width: 200, height: 200, borderRadius: 10, backgroundColor : "white"}}
               source={{ uri: item.image }}
             />
           </View>
-          <View>
-            <Text style={[styles.card, { fontWeight: "bold" , color:"white"}]}>{item.name}</Text>
+          <View style={{flex : 1 , margin: 10 , justifyContent : "space-around" , position : "relative"}}>
+            <Text style={{ fontSize : 20 , fontWeight: "bold" , color:"white" }}>{item.name}</Text>
+            <Text style={{ fontSize : 10 , color: 'white' }}>Filler text is text that shares some characteristics of a real written text, but is random or otherwise generated. It may be used to display a sample of fonts, generate text for testing, or to spoof an e-mail</Text>
             {cart.some((value) => value.id == item.id) ? (
-              <Pressable style = {{backgroundColor:"black", height: 40, width: 160}}  onPress={() => removeItemFromCart(item)}>
+              <Pressable style = {{backgroundColor:"black", height: 40, width: 160 ,}}  onPress={() => removeItemFromCart(item)}>
                 <Text
                   style={{
                     borderStyle: "bold",
@@ -119,16 +132,16 @@ const ShopScreen = () => {
       ))}
 
       {cart.map((item,index) => (
-        <View style={{padding:10}} key={index}>
-          <Text>{item.name}</Text>
+        <View style={{ flex : 1 , flexDirection :"row" , justifyContent : "space-between" ,alignItems : "center", paddingHorizontal : 50 , margin : 10 , height : 50}} key={index}>
+          <View style={{backgroundColor : 'white' , borderRadius : 10 , padding : 10 , width : 150 , alignItems : "center" , height : 50}}><Text>{item.name}</Text></View>
           <Pressable
             style={{
               flexDirection: "row",
-              marginTop:20,
               alignItems: "center",
-              backgroundColor: "dodgerblue",
+              backgroundColor: "white",
               borderRadius: 5,
-              width: 120,
+              width: 'auto',
+              height : 30
             }}
           >
             <Pressable onPress={() => decreaseQuantity(item)}>
@@ -137,6 +150,7 @@ const ShopScreen = () => {
                   fontSize: 25,
                   color: "red",
                   paddingHorizontal: 10,
+                  paddingBottom : 5
                 }}
               >
                 -
@@ -147,8 +161,9 @@ const ShopScreen = () => {
               <Text
                 style={{
                   fontSize: 20,
-                  color: "white",
+                  color: "black",
                   paddingHorizontal: 10,
+                  paddingBottom : 5
                 }}
               >
                 {item.quantity}
@@ -161,6 +176,7 @@ const ShopScreen = () => {
                   fontSize: 20,
                   color: "black",
                   paddingHorizontal: 10,
+                  paddingBottom : 5
                 }}
               >
                 +
@@ -174,11 +190,11 @@ const ShopScreen = () => {
   );
 };
 
+
 export default ShopScreen;
 
 const styles = StyleSheet.create({
   scrollView: {
-    backgroundColor: 'white',
-    marginHorizontal: 50,
+    width : 'auto',
   },
 });
