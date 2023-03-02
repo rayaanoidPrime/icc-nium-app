@@ -5,9 +5,9 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HomeScreen from "../screens/homeScreen";
 import LearnScreen from "../screens/learnScreen";
 import WatchScreen from "../screens/watchScreen";
-import shopStack from "../screens/shopScreen";
 import OnboardingScreen from "../screens/onboardingScreen";
-import Shopscreen from '../screens/shopScreen';
+import Shopscreen from "../screens/shopScreen";
+import merchScreen from "../screens/merchScreen";
 
 const AppStack = createNativeStackNavigator();
 const BottomBar = createBottomTabNavigator();
@@ -31,6 +31,7 @@ export default function AppNavigation(){
             <AppStack.Screen name="Learn" component={LearnScreen} />
             <AppStack.Screen name="Watch" component={WatchScreen} />
             <AppStack.Screen name="Shop" component={Shopscreen} />
+            <AppStack.Screen name="merchScreen" component={merchScreen} />
             <AppStack.Screen name="bottom_bar" component={BottomBarTab} />
         </AppStack.Navigator>
     )
