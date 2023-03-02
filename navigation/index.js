@@ -8,6 +8,9 @@ import WatchScreen from "../screens/watchScreen";
 import OnboardingScreen from "../screens/onboardingScreen";
 import Shopscreen from "../screens/shopScreen";
 import merchScreen from "../screens/merchScreen";
+import iccpasscreen from "../screens/iccpasscreen";
+import iccpointsscreen from "../screens/iccpointsscreen";
+import matchticket from "../screens/matchticket";
 
 const AppStack = createNativeStackNavigator();
 const BottomBar = createBottomTabNavigator();
@@ -32,6 +35,9 @@ export default function AppNavigation(){
             <AppStack.Screen name="Watch" component={WatchScreen} />
             <AppStack.Screen name="Shop" component={Shopscreen} />
             <AppStack.Screen name="merchScreen" component={merchScreen} />
+            <AppStack.Screen name="iccpasscreen" component={iccpasscreen} />
+            <AppStack.Screen name="iccpointsscreen" component={iccpointsscreen} />
+            <AppStack.Screen name="matchticket" component={matchticket} />
             <AppStack.Screen name="bottom_bar" component={BottomBarTab} />
         </AppStack.Navigator>
     )

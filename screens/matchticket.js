@@ -20,7 +20,7 @@ import {
   import { StatusBar } from 'expo-status-bar';
 
 
-export default function merchScreen () {
+export default function matchticket () {
   //const tabBottomHeight = useBottomTabBarHeight();
   const cart = useSelector((state) => state.cart.cart);
   console.log(cart);
@@ -30,25 +30,25 @@ export default function merchScreen () {
       id: "0",
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrc_VcnrhhwOQIFQ0CAftTfY4BmPETpCFhcQ&usqp=CAUw",
-      name: "Merchandise 1",
+      name: "Match Ticket 1",
     },
     {
       id: "1",
       image:
         "https://www.sluggers-putters.com/wp-content/uploads/2019/06/Season_Pass_Red.png",
-      name: "Merchandise 2",
+      name: "Match Ticket 2",
     },
     {
       id: "2",
       image:
         "https://i.pinimg.com/474x/ef/36/e2/ef36e24a16550237d67bdf2319322cf9.jpg",
-      name: "Merchandise 3",
+      name: "Match Ticket 3",
     },
     {
       id: "3",
       image:
        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTI5UieCWPyqm51rVoEb3Mcw7Nm93_-wh1vw&usqp=CAU",
-       name: "Merchandise 4",
+       name: "Match Ticket 4",
     },
   ];
   const addItemToCart = (item) => {
