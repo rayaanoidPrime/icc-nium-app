@@ -3,7 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import NavBar from '../components/navbar'
 
-export default function HomeScreen() {
+export default function HomeScreen({navigation}) {
     return (
       <SafeAreaView style={{ 
         flex : 1,
@@ -11,7 +11,7 @@ export default function HomeScreen() {
         backgroundColor :'rgba(2,43,89,255)',
         paddingTop: StatusBar.currentHeight,
         }}>
-        <NavBar />
+        <NavBar navigation={navigation} />
         <ScrollView style={styles.scrollContainer}>
           <Text style={{
             paddingLeft : 15,

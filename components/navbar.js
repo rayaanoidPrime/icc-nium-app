@@ -1,12 +1,13 @@
-import { View, Text , StyleSheet , Image} from 'react-native';
+import { View, Text , StyleSheet , Image, Pressable} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-export default function NavBar(){
+
+export default function NavBar({navigation}){
    return (
-    <View style={styles.navbar}>
+    <View style={[styles.navbar]}>
         <View >
-            <Ionicons name="menu" size={26} color="white" />
+            <Pressable onPress={()=>navigation.goBack()} ><Ionicons name="arrow-back-outline" color="white" size={24} /></Pressable>
         </View>
         <View style={styles.pfp}>
             <Ionicons style={styles.icons} name="cart" size={24} color="white" />
@@ -35,6 +36,7 @@ const styles = StyleSheet.create({
         alignItems : 'center',
         justifyContent : 'space-between',
         zIndex : 10,
+        maxHeight : 50
         //position : 'absolute'
     },
     icons:{

@@ -34,7 +34,7 @@ import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 //function merchandise_screen() { return (
   //<View><Text>Merch Screen</Text></View>
 //) }
-const ShopScreen = (props) => {
+const ShopScreen = ({navigation}) => {
     return (
      <SafeAreaView
      style={{
@@ -43,12 +43,12 @@ const ShopScreen = (props) => {
       backgroundColor :'rgba(2,43,89,255)',
       paddingTop: StatusBar.currentHeight,
      }}>
-      <NavBar/>
+      <NavBar navigation={navigation}/>
       <ScrollView style={[styles.scrollView]}>
-      <ScrollView horizontal={true} contentContainerStyle={styles.scrollContainer}>
+      <ScrollView  contentContainerStyle={styles.scrollContainer}>
        <View style={styles.cardContainer}>
          <TouchableOpacity
-           onPress={() => props.navigation.navigate('merchScreen')}>
+           onPress={() => navigation.navigate('merchScreen')}>
             <View style={styles.card}>
          <Text>image</Text>
          </View>
@@ -60,7 +60,7 @@ const ShopScreen = (props) => {
          </View>
          <View style={styles.cardContainer}>
          <TouchableOpacity
-           onPress={() => props.navigation.navigate('iccpasscreen')}>
+           onPress={() =>navigation.navigate('iccpasscreen')}>
          <View style={styles.card}>
           <Text>Image</Text>
           </View>
@@ -72,7 +72,7 @@ const ShopScreen = (props) => {
          </View>
          <View style={styles.cardContainer}>
          <TouchableOpacity
-           onPress={() => props.navigation.navigate('matchticket')}>
+           onPress={() => navigation.navigate('matchticket')}>
          <View style={styles.card}>
           <Text>Image</Text>
         </View>
@@ -84,7 +84,7 @@ const ShopScreen = (props) => {
          </View>
          <View style={styles.cardContainer}>
          <TouchableOpacity
-           onPress={() => props.navigation.navigate('iccpointsscreen')}>
+           onPress={() => navigation.navigate('iccpointsscreen')}>
          <View style={styles.card}>
           <Text>Image</Text>
           </View>
@@ -102,26 +102,14 @@ const ShopScreen = (props) => {
   }
 
   
-  
-
-//function shopStack ()
-//{
-// return (
-//   <NavigationContainer independent="true">
-//   <Stack.Navigator initialRouteName="Shopscreen">
-//     <Stack.Screen name="Shopscreen" component={Shopscreen}/>
-//     <Stack.Screen Component={merchScreen} name="merchScreen" />
-//   </Stack.Navigator>
-//   </NavigationContainer>
-// )
-//}
 export default ShopScreen;
 
 const styles = StyleSheet.create({
   scrollView: {
-    //backgroundColor: 'white',
-    //marginHorizontal: 50,
-    width: "auto"
+    height : "auto",
+     width : 'auto',
+     padding : 10,
+     paddingBottom : 15
   },
   container : {
     flex : 1,
@@ -131,7 +119,7 @@ const styles = StyleSheet.create({
   },
   card : {
     height: 150,
-    width: 200,
+    width: 'auto',
     backgroundColor : 'white',
     borderRadius : 40,
     justifyContent : 'center',

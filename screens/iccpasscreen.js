@@ -20,7 +20,7 @@ import {
   import { StatusBar } from 'expo-status-bar';
 
 
-export default function iccpasscreen () {
+export default function iccpasscreen ({navigation}) {
   //const tabBottomHeight = useBottomTabBarHeight();
   const cart = useSelector((state) => state.cart.cart);
   console.log(cart);
@@ -74,7 +74,7 @@ export default function iccpasscreen () {
       backgroundColor :'rgba(2,43,89,255)',
       paddingTop: StatusBar.currentHeight,
       }}>
-      <NavBar/>
+      <NavBar navigation={navigation} />
       <ScrollView style={[styles.scrollView  ]}>
       {images.map((item) => (
         <Pressable
